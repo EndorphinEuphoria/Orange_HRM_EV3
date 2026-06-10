@@ -1,0 +1,12 @@
+/run/media/lukas/589E19EC9E19C382/Workspace/Automatizacion_801D/pruebas-automatizadas/src/test/java/com/pruebas/AppTest.java
+/run/media/lukas/589E19EC9E19C382/Workspace/Automatizacion_801D/pruebas-automatizadas/src/test/java/pages/AdminPage.java
+/run/media/lukas/589E19EC9E19C382/Workspace/Automatizacion_801D/pruebas-automatizadas/src/test/java/pages/LoginPage.java
+/run/media/lukas/589E19EC9E19C382/Workspace/Automatizacion_801D/pruebas-automatizadas/src/test/java/pages/PimPage.java
+/run/media/lukas/589E19EC9E19C382/Workspace/Automatizacion_801D/pruebas-automatizadas/src/test/java/pages/SecurityPage.java
+/run/media/lukas/589E19EC9E19C382/Workspace/Automatizacion_801D/pruebas-automatizadas/src/test/java/runner/TestRunner.java
+/run/media/lukas/589E19EC9E19C382/Workspace/Automatizacion_801D/pruebas-automatizadas/src/test/java/steps/AdminSteps.java
+/run/media/lukas/589E19EC9E19C382/Workspace/Automatizacion_801D/pruebas-automatizadas/src/test/java/steps/LoginSteps.java
+/run/media/lukas/589E19EC9E19C382/Workspace/Automatizacion_801D/pruebas-automatizadas/src/test/java/steps/PimSteps.java
+/run/media/lukas/589E19EC9E19C382/Workspace/Automatizacion_801D/pruebas-automatizadas/src/test/java/steps/SecuritySteps.java
+/run/media/lukas/589E19EC9E19C382/Workspace/Automatizacion_801D/pruebas-automatizadas/src/test/java/utils/Excel.java
+/run/media/lukas/589E19EC9E19C382/Workspace/Automatizacion_801D/pruebas-automatizadas/src/test/java/utils/Hooks.java
