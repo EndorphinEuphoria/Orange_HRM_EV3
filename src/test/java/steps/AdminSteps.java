@@ -36,20 +36,16 @@ public class AdminSteps {
     public void clickAdd() {
         adminPage().clickAdd();
     }
-    @Y("completa los datos del nuevo usuario desde la fila {int}")
-    public void completarUsuarioDesdeExcel(int fila) {
-
-
-        String userRole         = Excel.leerCelda(fila, 2);
-        String employeeName     = Excel.leerCelda(fila, 3);
-        String status           = Excel.leerCelda(fila, 4);
-        String username         = Excel.leerCelda(fila, 5);
-        String password         = Excel.leerCelda(fila, 6);
-        String confirmPassword  = Excel.leerCelda(fila, 7);
-
-        adminPage().completarFormularioDesdeExcel(
-            userRole, employeeName, status, username, password, confirmPassword
-        );
+ 
+    @Y("completa los datos del nuevo usuario desde la hoja {string} fila {int}")
+    public void completarUsuarioDesdeExcel(String hoja, int fila) {
+        String userRole = Excel.leerCeldaDeHoja(hoja, fila, 2);
+        String employeeName = Excel.leerCeldaDeHoja(hoja, fila, 3);
+        String status = Excel.leerCeldaDeHoja(hoja, fila, 4);
+        String username = Excel.leerCeldaDeHoja(hoja, fila, 5);
+        String password = Excel.leerCeldaDeHoja(hoja, fila, 6);
+        String confirmPassword = Excel.leerCeldaDeHoja(hoja, fila, 7);
+        adminPage().completarFormularioDesdeExcel(userRole, employeeName, status, username, password, confirmPassword);
     }
 
     @Y("hace clic en Save")
@@ -62,9 +58,11 @@ public class AdminSteps {
         assertTrue(adminPage().usuarioCreado());
     }
 
-    @Y("completa los datos con usuario duplicado")
-    public void completarUsuarioDuplicado() {
-        adminPage().completarFormularioUsuarioDuplicado();
+    
+    @Y("completa los datos con usuario duplicado desde la hoja {string} fila {int}")
+    public void completarUsuarioDuplicado(String hoja, int fila) {
+        String username = Excel.leerCeldaDeHoja(hoja, fila, 2);
+        adminPage().completarFormularioUsuarioDuplicado(username);
     }
 
     @Then("el sistema debe rechazar la creacion del usuario")

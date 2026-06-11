@@ -1,29 +1,29 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="10" failures="0" name="runner.TestRunner" time="202.811" errors="0" skipped="0">
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="runner.TestRunner" time="338.762" tests="14" errors="0" skipped="0" failures="1">
   <properties>
     <property name="jansi.mode" value="force"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
-    <property name="java.vm.version" value="21.0.11+10-1-24.04.2-Ubuntu"/>
+    <property name="java.vm.version" value="21.0.11+10-1-26.04.2-Ubuntu"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-21-openjdk-amd64/lib"/>
-    <property name="maven.multiModuleProjectDirectory" value="/home/lukas/Documents/Workspace/pruebas-automatizadas"/>
+    <property name="maven.multiModuleProjectDirectory" value="/run/media/lukas/589E19EC9E19C382/Workspace/Automatizacion_801D/pruebas-automatizadas"/>
     <property name="java.vm.vendor" value="Ubuntu"/>
     <property name="java.vendor.url" value="https://ubuntu.com/"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
     <property name="path.separator" value=":"/>
     <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
-    <property name="user.country" value="CL"/>
+    <property name="user.country" value="ES"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/home/lukas/Documents/Workspace/pruebas-automatizadas"/>
+    <property name="user.dir" value="/run/media/lukas/589E19EC9E19C382/Workspace/Automatizacion_801D/pruebas-automatizadas"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
-    <property name="java.runtime.version" value="21.0.11+10-1-24.04.2-Ubuntu"/>
+    <property name="java.runtime.version" value="21.0.11+10-1-26.04.2-Ubuntu"/>
     <property name="os.arch" value="amd64"/>
     <property name="java.io.tmpdir" value="/tmp"/>
-    <property name="line.separator" value="
-"/>
+    <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="stderr.encoding" value="UTF-8"/>
     <property name="os.name" value="Linux"/>
+    <property name="guice_custom_class_loading" value="CHILD"/>
     <property name="classworlds.conf" value="/usr/share/maven/bin/m2.conf"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
     <property name="stdout.encoding" value="UTF-8"/>
@@ -33,7 +33,7 @@
     <property name="java.class.version" value="65.0"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="6.17.0-29-generic"/>
+    <property name="os.version" value="7.0.0-22-generic"/>
     <property name="library.jansi.path" value="/usr/share/maven/lib/jansi-native"/>
     <property name="user.home" value="/home/lukas"/>
     <property name="user.timezone" value="America/Santiago"/>
@@ -58,14 +58,52 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.endian" value="little"/>
   </properties>
-  <testcase classname="Administracion del sistema" name="TC-006 Navegacion al modulo Admin" time="22.607"/>
-  <testcase classname="Administracion del sistema" name="TC-008 Crear nuevo usuario" time="36.979"/>
-  <testcase classname="Administracion del sistema" name="TC-009 Crear usuario con username duplicado" time="25.19"/>
-  <testcase classname="Control de Acceso - Login OrangeHRM" name="TC-001 Inicio de sesion con credenciales validas" time="15.421"/>
-  <testcase classname="Control de Acceso - Login OrangeHRM" name="TC-002 Inicio de sesion con contrasena incorrecta" time="16.044"/>
-  <testcase classname="Gestion de empleados PIM" name="TC-003 Navegacion al modulo PIM" time="17.627"/>
-  <testcase classname="Gestion de empleados PIM" name="TC-004 Buscar empleado por nombre" time="17.115"/>
-  <testcase classname="Gestion de empleados PIM" name="TC-005 Buscar empleado inexistente" time="19.986"/>
-  <testcase classname="Gestion de empleados PIM" name="TC-011 Buscar empleado por letra" time="20.345"/>
-  <testcase classname="Seguridad - Control de Sesion" name="TC-010 Acceso directo a URL privada sin sesion activa" time="11.497"/>
+  <testcase name="TC-006 Navegacion al modulo Admin" classname="Administracion del sistema" time="15.823"/>
+  <testcase name="TC-008 Crear nuevo usuario" classname="Administracion del sistema" time="60.386">
+    <failure type="java.lang.AssertionError:">java.lang.AssertionError: null
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at steps.AdminSteps.validarUsuarioCreado(AdminSteps.java:58)
+	at ✽.el usuario se crea correctamente(file:///run/media/lukas/589E19EC9E19C382/Workspace/Automatizacion_801D/pruebas-automatizadas/src/test/resources/features/admin.feature:13)
+</failure>
+    <system-out><![CDATA[
+Scenario Outline: TC-008 Crear nuevo usuario                                   &amp#27;[90m# src/test/resources/features/admin.feature:16&amp#27;[0m
+  &amp#27;[32mGiven &amp#27;[0m&amp#27;[32mel administrador esta autenticado en el modulo Admin&amp#27;[0m                   &amp#27;[90m# steps.AdminSteps.iniciarSesionAdmin()&amp#27;[0m
+  &amp#27;[32mWhen &amp#27;[0m&amp#27;[32mhace clic en Add&amp#27;[0m                                                        &amp#27;[90m# steps.AdminSteps.clickAdd()&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mcompleta los datos del nuevo usuario desde la hoja &amp#27;[0m&amp#27;[32m&amp#27;[1m"CrearUsuario"&amp#27;[0m&amp#27;[32m fila &amp#27;[0m&amp#27;[32m&amp#27;[1m2&amp#27;[0m &amp#27;[90m# steps.AdminSteps.completarUsuarioDesdeExcel(java.lang.String,int)&amp#27;[0m
+  &amp#27;[32mAnd &amp#27;[0m&amp#27;[32mhace clic en Save&amp#27;[0m                                                        &amp#27;[90m# steps.AdminSteps.clickSave()&amp#27;[0m
+VALIDACION: Already exists
+  &amp#27;[31mThen &amp#27;[0m&amp#27;[31mel usuario se crea correctamente&amp#27;[0m                                        &amp#27;[90m# steps.AdminSteps.validarUsuarioCreado()&amp#27;[0m
+      &amp#27;[31mjava.lang.AssertionError
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at steps.AdminSteps.validarUsuarioCreado(AdminSteps.java:58)
+	at ✽.el usuario se crea correctamente(file:///run/media/lukas/589E19EC9E19C382/Workspace/Automatizacion_801D/pruebas-automatizadas/src/test/resources/features/admin.feature:13)
+&amp#27;[0m
+
+    Embedding FAIL — TC-008 Crear nuevo usuario [image/png 129121 bytes]
+
+✔ Screenshot: evidencias/FAIL_TC_008_Crear_nuevo_usuario_20260610_224309.png
+]]></system-out>
+    <system-err><![CDATA[jun 10, 2026 10:42:09 P. M. org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+ADVERTENCIA: Unable to find CDP implementation matching 149
+jun 10, 2026 10:42:09 P. M. org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+ADVERTENCIA: Unable to find version of CDP to use for 149.0.7827.55. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.18.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+ERROR StatusLogger Log4j2 could not find a logging implementation. Please add log4j-core to the classpath. Using SimpleLogger to log to the console...
+]]></system-err>
+  </testcase>
+  <testcase name="TC-009 Crear usuario con username duplicado" classname="Administracion del sistema" time="22.021"/>
+  <testcase name="TC-001 Inicio de sesion con credenciales validas" classname="Control de Acceso - Login OrangeHRM" time="10.421"/>
+  <testcase name="TC-002 Inicio de sesion con contrasena incorrecta" classname="Control de Acceso - Login OrangeHRM" time="10.8"/>
+  <testcase name="TC-015 Buscar KPIs por puesto de trabajo" classname="Monitoreo de Performance" time="14.783"/>
+  <testcase name="TC-016 Crear un nuevo Key Performance Indicator" classname="Monitoreo de Performance" time="23.415"/>
+  <testcase name="TC-003 Navegacion al modulo PIM" classname="Gestion de empleados PIM" time="26.488"/>
+  <testcase name="TC-004 Buscar empleado por nombre" classname="Gestion de empleados PIM" time="31.493"/>
+  <testcase name="TC-005 Buscar empleado inexistente" classname="Gestion de empleados PIM" time="33.902"/>
+  <testcase name="TC-011 Buscar empleado por letra" classname="Gestion de empleados PIM" time="29.446"/>
+  <testcase name="TC-012 Validar acceso a modulos desde el menu lateral" classname="Gestion de empleados PIM" time="25.824"/>
+  <testcase name="TC-010 Acceso directo a URL privada sin sesion activa" classname="Seguridad - Control de Sesion" time="9.916"/>
+  <testcase name="TC-017 Cierre de sesion exitoso" classname="Seguridad - Control de Sesion" time="24.044"/>
 </testsuite>

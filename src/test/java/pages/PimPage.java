@@ -11,7 +11,7 @@ public class PimPage {
 
     private WebDriver driver;
     private WebDriverWait wait;
-
+    
     private By campoUsuario = By.name("username");
     private By campoPassword = By.name("password");
     private By botonLogin = By.cssSelector("button[type='submit']");
@@ -70,18 +70,13 @@ public class PimPage {
             .click();
     }
 
-    public boolean hayResultadosBusqueda() {
-
+    public boolean hayResultadosBusqueda(String nombre) {
     try {
-
         wait.until(ExpectedConditions.presenceOfElementLocated(
-                By.cssSelector(".oxd-table-body")
+            By.cssSelector(".oxd-table-body")
         ));
-
-        return driver.getPageSource().contains("Charles");
-
+        return driver.getPageSource().contains(nombre);
     } catch (Exception e) {
-
         return false;
     }
 }
@@ -108,6 +103,20 @@ public class PimPage {
     } catch (Exception e) {
         return false;
     }
+}
+
+public void clickModuloMenu(String modulo) {
+    By opcion = By.xpath(
+        "//ul[@class='oxd-main-menu']//span[text()='" + modulo + "']"
+    );
+    wait.until(ExpectedConditions.elementToBeClickable(opcion)).click();
+}
+
+public boolean encabezadoVisible(String encabezado) {
+    By titulo = By.xpath(String.format("//h6[text()='%s']", encabezado));
+    return wait.until(
+        ExpectedConditions.visibilityOfElementLocated(titulo)
+    ).isDisplayed();
 }
      
 }
