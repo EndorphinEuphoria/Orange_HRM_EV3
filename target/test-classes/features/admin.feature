@@ -8,16 +8,18 @@ Feature: Administracion del sistema
   Scenario Outline: TC-008 Crear nuevo usuario
     Given el administrador esta autenticado en el modulo Admin
     When hace clic en Add
-    And completa los datos del nuevo usuario desde la fila <fila>
+    And completa los datos del nuevo usuario desde la hoja "<hoja>" fila <fila>
     And hace clic en Save
     Then el usuario se crea correctamente
-
     Examples:
-      | fila |
-      | 2    |
+      | hoja          | fila |
+      | CrearUsuario  | 2    |
 
-  Scenario: TC-009 Crear usuario con username duplicado
+  Scenario Outline: TC-009 Crear usuario con username duplicado
     Given el administrador esta autenticado en el modulo Admin
     When hace clic en Add
-    And completa los datos con usuario duplicado
+    And completa los datos con usuario duplicado desde la hoja "<hoja>" fila <fila>
     Then el sistema debe rechazar la creacion del usuario
+    Examples:
+      | hoja              | fila |
+      | UsuarioDuplicado  | 2    |

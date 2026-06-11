@@ -326,7 +326,7 @@ public class AdminPage {
 // FORMULARIO USUARIO DUPLICADO
 // =====================================================
 
-public void completarFormularioUsuarioDuplicado() {
+public void completarFormularioUsuarioDuplicado(String username) {
 
     // =================================================
     // USER ROLE
@@ -467,8 +467,7 @@ public void completarFormularioUsuarioDuplicado() {
     );
 
     userField.clear();
-
-    userField.sendKeys("Admin");
+    userField.sendKeys(username);
     userField.sendKeys(Keys.TAB);
     try { Thread.sleep(1500); } catch (Exception e) { e.printStackTrace(); }
 
@@ -610,7 +609,7 @@ public void completarFormularioDesdeExcel(
     empInput.click();
     empInput.clear();
 
-    String hint = employeeName.split(" ")[0]; // "Jobin" de "Jobin Mathew Sam"
+    String hint = employeeName.split(" ")[0]; 
     for (char c : hint.toCharArray()) {
         empInput.sendKeys(String.valueOf(c));
         try { Thread.sleep(300); } catch (Exception ignored) {}

@@ -27,4 +27,19 @@ public class SecuritySteps {
     public void validarRedireccionLogin() {
         assertTrue(securityPage().obtenerUrlActual().contains("auth/login"));
     }
+
+    @Dado("el usuario ha iniciado sesion para probar el control de sesion")
+    public void iniciarSesionControlSesion() {
+        securityPage().iniciarSesionAdmin();
+    }
+
+    @Cuando("el usuario decide cerrar su sesion actual")
+    public void cerrarSesion() {
+        securityPage().cerrarSesion();
+    }
+
+    @Entonces("el sistema deberia redirigirlo automaticamente a la pagina de inicio de sesion")
+    public void validarRedireccionPaginaLogin() {
+        assertTrue(securityPage().obtenerUrlActual().contains("auth/login"));
+    }
 }

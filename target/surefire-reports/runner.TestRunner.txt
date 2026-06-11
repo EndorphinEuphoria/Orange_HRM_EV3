@@ -1,4 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: runner.TestRunner
 -------------------------------------------------------------------------------
-Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 203.694 sec
+Tests run: 14, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 339.658 sec <<< FAILURE! - in runner.TestRunner
+TC-008 Crear nuevo usuario(Administracion del sistema)  Time elapsed: 60.386 sec  <<< FAILURE!
+java.lang.AssertionError: null
+	at org.junit.Assert.fail(Assert.java:87)
+	at org.junit.Assert.assertTrue(Assert.java:42)
+	at org.junit.Assert.assertTrue(Assert.java:53)
+	at steps.AdminSteps.validarUsuarioCreado(AdminSteps.java:58)
+	at ✽.el usuario se crea correctamente(file:///run/media/lukas/589E19EC9E19C382/Workspace/Automatizacion_801D/pruebas-automatizadas/src/test/resources/features/admin.feature:13)
+
