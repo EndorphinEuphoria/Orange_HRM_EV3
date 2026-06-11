@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="runner.TestRunner" time="338.762" tests="14" errors="0" skipped="0" failures="1">
+<testsuite name="runner.TestRunner" time="196.272" tests="14" errors="0" skipped="0" failures="1">
   <properties>
     <property name="jansi.mode" value="force"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -58,8 +58,8 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.endian" value="little"/>
   </properties>
-  <testcase name="TC-006 Navegacion al modulo Admin" classname="Administracion del sistema" time="15.823"/>
-  <testcase name="TC-008 Crear nuevo usuario" classname="Administracion del sistema" time="60.386">
+  <testcase name="TC-006 Navegacion al modulo Admin" classname="Administracion del sistema" time="13.109"/>
+  <testcase name="TC-008 Crear nuevo usuario" classname="Administracion del sistema" time="56.376">
     <failure type="java.lang.AssertionError:">java.lang.AssertionError: null
 	at org.junit.Assert.fail(Assert.java:87)
 	at org.junit.Assert.assertTrue(Assert.java:42)
@@ -83,27 +83,27 @@ VALIDACION: Already exists
 	at ✽.el usuario se crea correctamente(file:///run/media/lukas/589E19EC9E19C382/Workspace/Automatizacion_801D/pruebas-automatizadas/src/test/resources/features/admin.feature:13)
 &amp#27;[0m
 
-    Embedding FAIL — TC-008 Crear nuevo usuario [image/png 129121 bytes]
+    Embedding FAIL — TC-008 Crear nuevo usuario [image/png 129072 bytes]
 
-✔ Screenshot: evidencias/FAIL_TC_008_Crear_nuevo_usuario_20260610_224309.png
+✔ Screenshot: evidencias/FAIL_TC_008_Crear_nuevo_usuario_20260611_190130.png
 ]]></system-out>
-    <system-err><![CDATA[jun 10, 2026 10:42:09 P. M. org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+    <system-err><![CDATA[jun 11, 2026 7:00:35 P. M. org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 ADVERTENCIA: Unable to find CDP implementation matching 149
-jun 10, 2026 10:42:09 P. M. org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
-ADVERTENCIA: Unable to find version of CDP to use for 149.0.7827.55. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.18.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+jun 11, 2026 7:00:35 P. M. org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+ADVERTENCIA: Unable to find version of CDP to use for 149.0.7827.115. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.18.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
 ERROR StatusLogger Log4j2 could not find a logging implementation. Please add log4j-core to the classpath. Using SimpleLogger to log to the console...
 ]]></system-err>
   </testcase>
-  <testcase name="TC-009 Crear usuario con username duplicado" classname="Administracion del sistema" time="22.021"/>
-  <testcase name="TC-001 Inicio de sesion con credenciales validas" classname="Control de Acceso - Login OrangeHRM" time="10.421"/>
-  <testcase name="TC-002 Inicio de sesion con contrasena incorrecta" classname="Control de Acceso - Login OrangeHRM" time="10.8"/>
-  <testcase name="TC-015 Buscar KPIs por puesto de trabajo" classname="Monitoreo de Performance" time="14.783"/>
-  <testcase name="TC-016 Crear un nuevo Key Performance Indicator" classname="Monitoreo de Performance" time="23.415"/>
-  <testcase name="TC-003 Navegacion al modulo PIM" classname="Gestion de empleados PIM" time="26.488"/>
-  <testcase name="TC-004 Buscar empleado por nombre" classname="Gestion de empleados PIM" time="31.493"/>
-  <testcase name="TC-005 Buscar empleado inexistente" classname="Gestion de empleados PIM" time="33.902"/>
-  <testcase name="TC-011 Buscar empleado por letra" classname="Gestion de empleados PIM" time="29.446"/>
-  <testcase name="TC-012 Validar acceso a modulos desde el menu lateral" classname="Gestion de empleados PIM" time="25.824"/>
-  <testcase name="TC-010 Acceso directo a URL privada sin sesion activa" classname="Seguridad - Control de Sesion" time="9.916"/>
-  <testcase name="TC-017 Cierre de sesion exitoso" classname="Seguridad - Control de Sesion" time="24.044"/>
+  <testcase name="TC-009 Crear usuario con username duplicado" classname="Administracion del sistema" time="13.468"/>
+  <testcase name="TC-001 Inicio de sesion con credenciales validas" classname="Control de Acceso - Login OrangeHRM" time="6.326"/>
+  <testcase name="TC-002 Inicio de sesion con contrasena incorrecta" classname="Control de Acceso - Login OrangeHRM" time="10.407"/>
+  <testcase name="TC-015 Buscar KPIs por puesto de trabajo" classname="Monitoreo de Performance" time="12.013"/>
+  <testcase name="TC-016 Crear un nuevo Key Performance Indicator" classname="Monitoreo de Performance" time="17.696"/>
+  <testcase name="TC-003 Navegacion al modulo PIM" classname="Gestion de empleados PIM" time="10.573"/>
+  <testcase name="TC-004 Buscar empleado por nombre" classname="Gestion de empleados PIM" time="12.801"/>
+  <testcase name="TC-005 Buscar empleado inexistente" classname="Gestion de empleados PIM" time="12.288"/>
+  <testcase name="TC-011 Buscar empleado por letra" classname="Gestion de empleados PIM" time="9.578"/>
+  <testcase name="TC-012 Validar acceso a modulos desde el menu lateral" classname="Gestion de empleados PIM" time="9.187"/>
+  <testcase name="TC-010 Acceso directo a URL privada sin sesion activa" classname="Seguridad - Control de Sesion" time="4.801"/>
+  <testcase name="TC-017 Cierre de sesion exitoso" classname="Seguridad - Control de Sesion" time="7.649"/>
 </testsuite>

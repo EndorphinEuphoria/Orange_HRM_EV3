@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: runner.TestRunner
 -------------------------------------------------------------------------------
-Tests run: 14, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 339.658 sec <<< FAILURE! - in runner.TestRunner
-TC-008 Crear nuevo usuario(Administracion del sistema)  Time elapsed: 60.386 sec  <<< FAILURE!
+Tests run: 14, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 197.076 sec <<< FAILURE! - in runner.TestRunner
+TC-008 Crear nuevo usuario(Administracion del sistema)  Time elapsed: 56.376 sec  <<< FAILURE!
 java.lang.AssertionError: null
 	at org.junit.Assert.fail(Assert.java:87)
 	at org.junit.Assert.assertTrue(Assert.java:42)
