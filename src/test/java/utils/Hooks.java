@@ -4,6 +4,7 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -27,28 +28,23 @@ public class Hooks {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
-
         options.addArguments("--force-device-scale-factor=1");
-
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-
-        try { Thread.sleep(500); } catch (Exception ignored) {}
     }
 
-    @After(order = 1)   
-public void capturarEvidencia(Scenario scenario) {
-    if (driver == null) return;
-    try {
-        Thread.sleep(3000);
-        esperarPaginaEstable();
-        tomarScreenshot(scenario);
-    } catch (Exception e) {
-        System.out.println("Error capturando evidencia: " + e.getMessage());
+    @After(order = 1)
+    public void capturarEvidencia(Scenario scenario) {
+        if (driver == null) return;
+        try {
+            esperarPaginaEstable();
+            tomarScreenshot(scenario);
+        } catch (Exception e) {
+            System.out.println("Error capturando evidencia: " + e.getMessage());
+        }
     }
-}
 
-    @After(order = 0)  
+    @After(order = 0)
     public void cerrarDriver() {
         if (driver != null) {
             driver.quit();
@@ -65,39 +61,26 @@ public void capturarEvidencia(Scenario scenario) {
     }
 
     private void esperarPaginaEstable() {
-
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-
         try {
             wait.until(webDriver ->
-                ((JavascriptExecutor) webDriver)
-                    .executeScript("return document.readyState")
-                    .equals("complete")
-            );
+                    ((JavascriptExecutor) webDriver)
+                            .executeScript("return document.readyState")
+                            .equals("complete"));
         } catch (Exception ignored) {}
-
         try {
             wait.until(webDriver -> {
                 Object result = ((JavascriptExecutor) webDriver)
-                    .executeScript(
-                        "return (typeof jQuery !== 'undefined') " +
-                        "? jQuery.active === 0 : true"
-                    );
+                        .executeScript("return (typeof jQuery !== 'undefined') ? jQuery.active === 0 : true");
                 return Boolean.TRUE.equals(result);
             });
         } catch (Exception ignored) {}
-
         try {
             wait.until(ExpectedConditions.invisibilityOfElementLocated(
-                org.openqa.selenium.By.className("oxd-loading-spinner")
-            ));
-        } catch (Exception ignored) {}
-
-        try {
- 
-            Thread.sleep(600);
+                    By.className("oxd-loading-spinner")));
         } catch (Exception ignored) {}
     }
+
     private void tomarScreenshot(Scenario scenario) {
         try {
             String timestamp   = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -113,9 +96,7 @@ public void capturarEvidencia(Scenario scenario) {
 
             byte[] bytes = FileUtils.readFileToByteArray(dest);
             scenario.attach(bytes, "image/png", estado + " — " + scenario.getName());
-
             System.out.println("✔ Screenshot: " + dest.getPath());
-
         } catch (Exception e) {
             System.out.println("✘ Screenshot fallido: " + e.getMessage());
         }
