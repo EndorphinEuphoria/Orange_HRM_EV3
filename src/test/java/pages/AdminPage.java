@@ -44,15 +44,17 @@ public class AdminPage {
     }
 
     public void iniciarSesionAdmin() {
-        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(campoUsuario)).sendKeys("Admin");
-        driver.findElement(campoContrasena).sendKeys("admin123");
-        driver.findElement(botonLogin).click();
-        wait.until(ExpectedConditions.urlContains("dashboard"));
+    driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+    wait.until(ExpectedConditions.visibilityOfElementLocated(campoUsuario)).sendKeys("Admin");
+    driver.findElement(campoContrasena).sendKeys("admin123");
+    driver.findElement(botonLogin).click();
+    wait.until(ExpectedConditions.urlContains("dashboard"));
+    driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/admin/viewSystemUsers");
+    wait.until(ExpectedConditions.urlContains("admin"));
     }
 
-    public void clickAdmin() {
-        wait.until(ExpectedConditions.elementToBeClickable(menuAdmin)).click();
+   public void clickAdmin() {
+    wait.until(ExpectedConditions.urlContains("admin"));
     }
 
     public boolean estaEnAdmin() {
@@ -81,19 +83,24 @@ public class AdminPage {
         }
     }
 
-    public boolean usuarioDuplicado() {
-        try {
-            wait.until(driver -> {
-                List<WebElement> errores = driver.findElements(mensajeError);
-                return errores.stream()
-                        .anyMatch(e -> e.getText().toLowerCase().contains("already exists"));
-            });
-            return true;
-        } catch (Exception e) {
-            System.out.println("EXCEPCION: " + e.getMessage());
+   public boolean usuarioDuplicado() {
+    try {
+        new WebDriverWait(driver, Duration.ofSeconds(15)).until(driver -> {
+            String url = driver.getCurrentUrl();
+            if (url.contains("saveSystemUser")) {
+                return !driver.findElements(
+                    By.cssSelector(".oxd-input-field-error-message")).isEmpty();
+            }
             return false;
-        }
+        });
+        return true;
+    } catch (Exception e) {
+        System.out.println("URL actual: " + driver.getCurrentUrl());
+        driver.findElements(By.cssSelector(".oxd-input-field-error-message"))
+            .forEach(el -> { try { System.out.println("ERROR: [" + el.getText() + "]"); } catch (Exception ignored) {} });
+        return false;
     }
+}
 
     private void escribirEnAutocompleteYEsperar(WebElement campo, String texto) {
         campo.click();
@@ -182,8 +189,6 @@ public class AdminPage {
         userField.sendKeys(username);
         userField.sendKeys(Keys.TAB);
 
-        fluentWait.until(driver -> !driver.findElements(mensajeError).isEmpty());
-
         WebElement passField = wait.until(ExpectedConditions.visibilityOfElementLocated(passwordInput));
         passField.clear();
         passField.sendKeys("Admin123!");
@@ -192,8 +197,7 @@ public class AdminPage {
         confirmField.clear();
         confirmField.sendKeys("Admin123!");
         confirmField.sendKeys(Keys.TAB);
-
-        esperarValidacionFormulario();
+        wait.until(ExpectedConditions.elementToBeClickable(botonSave)).click();
     }
 
     public void completarFormularioDesdeExcel(

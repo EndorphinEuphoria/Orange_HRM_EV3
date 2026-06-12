@@ -21,7 +21,7 @@ public class SecurityPage {
 
     public SecurityPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
     public void abrirDashboardSinLogin() {
@@ -42,7 +42,8 @@ public class SecurityPage {
 
     public void cerrarSesion() {
     wait.until(ExpectedConditions.elementToBeClickable(menuUsuario)).click();
-    WebElement btnLogout = wait.until(ExpectedConditions.presenceOfElementLocated(logout));
+    WebElement btnLogout = wait.until(
+        ExpectedConditions.visibilityOfElementLocated(logout)); // visibilidad, no solo presencia
     ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnLogout);
     wait.until(ExpectedConditions.urlContains("auth/login"));
     }

@@ -1,6 +1,7 @@
 package utils;
 
 import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.apache.commons.io.FileUtils;
@@ -22,6 +23,7 @@ import java.util.Date;
 public class Hooks {
 
     private static WebDriver driver;
+    private int contadorPasos; 
 
     @Before
     public void setUp() {
@@ -31,20 +33,22 @@ public class Hooks {
         options.addArguments("--force-device-scale-factor=1");
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
+        contadorPasos = 0;
     }
 
-    @After(order = 1)
-    public void capturarEvidencia(Scenario scenario) {
+    @AfterStep
+    public void capturarEvidenciaPorPaso(Scenario scenario) {
         if (driver == null) return;
         try {
+            contadorPasos++;
             esperarPaginaEstable();
-            tomarScreenshot(scenario);
+            tomarScreenshotPorPaso(scenario, contadorPasos);
         } catch (Exception e) {
-            System.out.println("Error capturando evidencia: " + e.getMessage());
+            System.out.println("Error capturando evidencia del paso: " + e.getMessage());
         }
     }
 
-    @After(order = 0)
+    @After
     public void cerrarDriver() {
         if (driver != null) {
             driver.quit();
@@ -81,24 +85,27 @@ public class Hooks {
         } catch (Exception ignored) {}
     }
 
-    private void tomarScreenshot(Scenario scenario) {
+    private void tomarScreenshotPorPaso(Scenario scenario, int pasoNum) {
         try {
             String timestamp   = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-            String nombreLimpo = scenario.getName().replaceAll("[^a-zA-Z0-9]", "_");
+            String nombreLimpio = scenario.getName().replaceAll("[^a-zA-Z0-9]", "_");
             String estado      = scenario.isFailed() ? "FAIL" : "PASS";
 
             File carpeta = new File("evidencias");
             if (!carpeta.exists()) carpeta.mkdirs();
 
+            String nombreArchivo = String.format("evidencias/%s_%s_Paso_%d_%s.png", 
+                    estado, nombreLimpio, pasoNum, timestamp);
+
             File src  = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            File dest = new File("evidencias/" + estado + "_" + nombreLimpo + "_" + timestamp + ".png");
+            File dest = new File(nombreArchivo);
             FileUtils.copyFile(src, dest);
 
             byte[] bytes = FileUtils.readFileToByteArray(dest);
-            scenario.attach(bytes, "image/png", estado + " — " + scenario.getName());
-            System.out.println("✔ Screenshot: " + dest.getPath());
+            scenario.attach(bytes, "image/png", "Paso " + pasoNum + " — " + estado);
+            System.out.println("✔ Captura guardada: " + dest.getPath());
         } catch (Exception e) {
-            System.out.println("✘ Screenshot fallido: " + e.getMessage());
+            System.out.println("✘ Error al guardar captura de paso: " + e.getMessage());
         }
     }
 }

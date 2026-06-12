@@ -1,31 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Cucumber" time="196.359" tests="14" skipped="0" failures="1" errors="0">
-<testcase classname="Administracion del sistema" name="TC-006 Navegacion al modulo Admin" time="13.043">
+<testsuite name="Cucumber" time="468.599" tests="14" skipped="0" failures="0" errors="0">
+<testcase classname="Administracion del sistema" name="TC-006 Navegacion al modulo Admin" time="41.026">
 <system-out><![CDATA[
 Given el administrador esta autenticado en el modulo Admin..................passed
 When hace clic en el menu Admin.............................................passed
 Then debe visualizar el listado de usuarios.................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Administracion del sistema" name="TC-008 Crear nuevo usuario - Example #1.1" time="56.361">
-<failure type="java.lang.AssertionError">
-<![CDATA[java.lang.AssertionError
-	at org.junit.Assert.fail(Assert.java:87)
-	at org.junit.Assert.assertTrue(Assert.java:42)
-	at org.junit.Assert.assertTrue(Assert.java:53)
-	at steps.AdminSteps.validarUsuarioCreado(AdminSteps.java:58)
-	at ✽.el usuario se crea correctamente(file:///run/media/lukas/589E19EC9E19C382/Workspace/Automatizacion_801D/pruebas-automatizadas/src/test/resources/features/admin.feature:13)
-]]>
-</failure>
+<testcase classname="Administracion del sistema" name="TC-008 Crear nuevo usuario - Example #1.1" time="73.772">
 <system-out><![CDATA[
 Given el administrador esta autenticado en el modulo Admin..................passed
 When hace clic en Add.......................................................passed
 And completa los datos del nuevo usuario desde la hoja "CrearUsuario" fila 2.passed
 And hace clic en Save.......................................................passed
-Then el usuario se crea correctamente.......................................failed
+Then el usuario se crea correctamente.......................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Administracion del sistema" name="TC-009 Crear usuario con username duplicado - Example #1.1" time="13.464">
+<testcase classname="Administracion del sistema" name="TC-009 Crear usuario con username duplicado - Example #1.1" time="60.984">
 <system-out><![CDATA[
 Given el administrador esta autenticado en el modulo Admin..................passed
 When hace clic en Add.......................................................passed
@@ -33,7 +24,7 @@ And completa los datos con usuario duplicado desde la hoja "UsuarioDuplicado" fi
 Then el sistema debe rechazar la creacion del usuario.......................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Control de Acceso - Login OrangeHRM" name="TC-001 Inicio de sesion con credenciales validas" time="6.322">
+<testcase classname="Control de Acceso - Login OrangeHRM" name="TC-001 Inicio de sesion con credenciales validas" time="30.311">
 <system-out><![CDATA[
 Given el usuario esta en la pagina de login.................................passed
 When ingresa usuario "Admin" y contrasena "admin123"........................passed
@@ -41,7 +32,7 @@ And hace clic en Login......................................................pass
 Then debe ser redirigido al Dashboard.......................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Control de Acceso - Login OrangeHRM" name="TC-002 Inicio de sesion con contrasena incorrecta" time="10.402">
+<testcase classname="Control de Acceso - Login OrangeHRM" name="TC-002 Inicio de sesion con contrasena incorrecta" time="32.506">
 <system-out><![CDATA[
 Given el usuario esta en la pagina de login.................................passed
 When ingresa usuario "Admin" y contrasena "wrong123"........................passed
@@ -49,14 +40,14 @@ And hace clic en Login......................................................pass
 Then debe aparecer el mensaje de error "Invalid credentials"................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Monitoreo de Performance" name="TC-015 Buscar KPIs por puesto de trabajo - Example #1.1" time="12.006">
+<testcase classname="Monitoreo de Performance" name="TC-015 Buscar KPIs por puesto de trabajo - Example #1.1" time="51.301">
 <system-out><![CDATA[
 Given el administrador ha iniciado sesion y navega al modulo de Performance.passed
 When filtra los KPIs por el puesto de trabajo desde la hoja "Performance" fila 2.passed
 Then la lista de KPIs deberia mostrar registros asociados al puesto desde la hoja "Performance" fila 2.passed
 ]]></system-out>
 </testcase>
-<testcase classname="Monitoreo de Performance" name="TC-016 Crear un nuevo Key Performance Indicator - Example #1.1" time="17.691">
+<testcase classname="Monitoreo de Performance" name="TC-016 Crear un nuevo Key Performance Indicator - Example #1.1" time="70.245">
 <system-out><![CDATA[
 Given el administrador ha iniciado sesion y navega al modulo de Performance.passed
 When registra un nuevo KPI desde la hoja "Performance" fila 3...............passed
@@ -64,49 +55,49 @@ And filtra los KPIs por el puesto de trabajo desde la hoja "Performance" fila 3.
 Then la lista de KPIs deberia incluir el indicador desde la hoja "Performance" fila 3.passed
 ]]></system-out>
 </testcase>
-<testcase classname="Gestion de empleados PIM" name="TC-003 Navegacion al modulo PIM" time="10.57">
+<testcase classname="Gestion de empleados PIM" name="TC-003 Navegacion al modulo PIM" time="36.709">
 <system-out><![CDATA[
 Given el usuario ha iniciado sesion como administrador......................passed
 When hace clic en el menu PIM...............................................passed
 Then debe visualizar el listado de empleados................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Gestion de empleados PIM" name="TC-004 Buscar empleado por nombre - Example #1.1" time="12.797">
+<testcase classname="Gestion de empleados PIM" name="TC-004 Buscar empleado por nombre - Example #1.1" time="22.352">
 <system-out><![CDATA[
 Given el usuario esta en el modulo PIM......................................passed
 When busca al empleado desde la hoja "BuscarEmpleado" fila 2................passed
 Then debe visualizar resultados relacionados................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Gestion de empleados PIM" name="TC-005 Buscar empleado inexistente - Example #1.1" time="12.285">
+<testcase classname="Gestion de empleados PIM" name="TC-005 Buscar empleado inexistente - Example #1.1" time="16.424">
 <system-out><![CDATA[
 Given el usuario esta en el modulo PIM......................................passed
 When busca al empleado inexistente desde la hoja "BuscarEmpleado" fila 3....passed
 Then no debe mostrar resultados.............................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Gestion de empleados PIM" name="TC-011 Buscar empleado por letra - Example #1.1" time="9.572">
+<testcase classname="Gestion de empleados PIM" name="TC-011 Buscar empleado por letra - Example #1.1" time="9.497">
 <system-out><![CDATA[
 Given el usuario esta en el modulo PIM......................................passed
 When busca empleados desde la hoja "BuscarEmpleado" fila 4..................passed
 Then debe mostrar empleados que contengan la letra..........................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Gestion de empleados PIM" name="TC-012 Validar acceso a modulos desde el menu lateral" time="9.184">
+<testcase classname="Gestion de empleados PIM" name="TC-012 Validar acceso a modulos desde el menu lateral" time="9.262">
 <system-out><![CDATA[
 Given el usuario ha iniciado sesion para validar la navegabilidad...........passed
 When el usuario selecciona la opcion "PIM" del menu lateral.................passed
 Then el sistema deberia redirigir a la seccion con el encabezado "PIM"......passed
 ]]></system-out>
 </testcase>
-<testcase classname="Seguridad - Control de Sesion" name="TC-010 Acceso directo a URL privada sin sesion activa" time="4.799">
+<testcase classname="Seguridad - Control de Sesion" name="TC-010 Acceso directo a URL privada sin sesion activa" time="4.944">
 <system-out><![CDATA[
 Given el usuario no esta autenticado........................................passed
 When intenta acceder directamente al dashboard..............................passed
 Then debe ser redirigido al login...........................................passed
 ]]></system-out>
 </testcase>
-<testcase classname="Seguridad - Control de Sesion" name="TC-017 Cierre de sesion exitoso" time="7.647">
+<testcase classname="Seguridad - Control de Sesion" name="TC-017 Cierre de sesion exitoso" time="8.759">
 <system-out><![CDATA[
 Given el usuario ha iniciado sesion para probar el control de sesion........passed
 When el usuario decide cerrar su sesion actual..............................passed
